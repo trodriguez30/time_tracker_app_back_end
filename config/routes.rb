@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: "json" } do
     namespace :v1 do
-      get 'users/new' => 'users#new', as: :new_user
-	
-      # create (post) action for when sign up form is submitted:
-      post 'users' => 'users#create'
-
+      resources :users   
       # log in page with form:
     	get '/login'     => 'sessions#new'
 	

@@ -10,9 +10,10 @@ class Api::V1::SessionsController < ApplicationController
       def create
         user = User.find_by(username: params[:session][:username])
         if user && user.authenticate(params[:session][:password])
-          render :json=> {text: "Succesful", status: 200}
+          session[:user_id] = user.id.to_s
+          render :json => 200
         else
-          render :json => {text: "Invalid email/password combination", status: 422}
+          render :json => 422
         end
       end
     
