@@ -11,7 +11,7 @@ class Api::V1::SessionsController < ApplicationController
         user = User.find_by(username: params[:session][:username])
         if user && user.authenticate(params[:session][:password])
           session[:user_id] = user.id.to_s
-          render :json => 200
+          render :json => user.id
         else
           render :json => 422
         end
