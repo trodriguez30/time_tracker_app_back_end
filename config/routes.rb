@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: "json" } do
     namespace :v1 do
       resources :users do
-        resources :projects
+        resources :projects do
+          resources :tasks
+        end
+        get '/all_tasks'     => 'tasks#all_tasks'
       end 
       # log in page with form:
     	get '/login'     => 'sessions#new'

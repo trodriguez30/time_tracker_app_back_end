@@ -12,6 +12,12 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def show
+    @project = Project.find_by(id: params[:id])
+    if @project
+      render :json => @project
+    else
+      render :json => 422
+    end
   end
 
   # GET /projects/new
