@@ -58,6 +58,15 @@ class Api::V1::TasksController < ApplicationController
     end
   end
 
+  def destroy
+    @task = Task.find_by(id: params[:id])
+      if @task.destroy
+        render :json => 201
+    else
+      render :json => 422
+    end
+  end
+
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.
