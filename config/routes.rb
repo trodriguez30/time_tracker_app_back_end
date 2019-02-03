@@ -7,14 +7,12 @@ Rails.application.routes.draw do
         end
         get '/all_tasks'     => 'tasks#all_tasks'
       end 
-      # log in page with form:
+      # log in 
     	get '/login'     => 'sessions#new'
 	
-    	# create (post) action for when log in form is submitted:
+    	# Log in
     	post '/login'    => 'sessions#create'
 	
-    	# delete action to log out:
-      delete '/logout' => 'sessions#destroy'  
       
 
     end

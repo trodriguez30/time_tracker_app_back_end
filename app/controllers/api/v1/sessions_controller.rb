@@ -7,6 +7,7 @@ class Api::V1::SessionsController < ApplicationController
         # new.html.erb AKA the login page
       end
     
+      # Log In
       def create
         user = User.find_by(username: params[:session][:username])
         if user && user.authenticate(params[:session][:password])
@@ -16,12 +17,5 @@ class Api::V1::SessionsController < ApplicationController
           render :json => 422
         end
       end
-    
-      def destroy
-        # delete the saved user_id key/value from the cookie:
-        session.delete(:user_id)
-        redirect_to login_path, notice: "Logged out!"
-      end
       
-    # ----- end of added lines -----
     end
